@@ -54,7 +54,7 @@ module Mongoid::PaperclipQueue
       
       def server
         return @server if @server
-        self.server = ::Redis.respond_to?(:connect) ? ::Redis.connect : "localhost:6379"
+        self.server = Resque.redis
         self.server
       end        
       extend self
